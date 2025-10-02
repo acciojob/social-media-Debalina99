@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PostDetails from './PostDetails'
+import { Routes, Route, useNavigate } from "react-router-dom"
+import PostsPage from "./PostsPage"
+import UsersPage from "./UsersPage"
+import NotificationsPage from "./NotificationsPage"
+import { loadData, saveData, makeId } from './data'
 
 export default function App(){
 const [state, setState] = useState(() => loadData())
@@ -15,12 +20,19 @@ function createPost({title, authorId, content}){
 function updatePost(updated){
   setState(s => ({ ...s, posts: s.posts.map(p => p.id === updated.id ? { ...p, ...updated } : p) }))
 }
-function reactToPost(postId, reactionIndex){
-  setState(s => ({
-  ...s,
-  posts: s.posts.map(p => p.id === postId ? ({ ...p, reactions: p.reactions.map((r,i)=> i===reactionIndex ? (i===4? 0 : r+1) : r) }) : p)
-  }))
-}
+function reactToPost(postId, reactionIndex) {
+    setState(s => ({
+      ...s,
+      posts: s.posts.map(p => 
+        p.id === postId 
+          ? { 
+              ...p, 
+              reactions: p.reactions.map((r, i) => i === reactionIndex ? (i === 4 ? 0 : r + 1) : r) 
+            } 
+          : p
+      )
+    }))
+  }
 
 return (
 <div className="App">
