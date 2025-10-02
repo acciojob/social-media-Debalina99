@@ -10,6 +10,7 @@ export default function CreatePostForm({ users, onSubmit }){
     onSubmit({ title, authorId: author, content })
     setTitle('')
     setContent('')
+    setAuthor(users[0]?.id)
 }
 return (
   <form onSubmit={handle} aria-label="create-post-form">
