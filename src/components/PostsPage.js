@@ -13,14 +13,8 @@ export default function PostsPage({ state, createPost, reactToPost }) {
         {/* First child should be a placeholder/header */}
         <div className="posts-header">Posts header</div>
 
-        {/* Render ALL posts in order */}
-        {state.posts.map((p) => (
-          <PostCard
-            key={p.id}
-            post={p}
-            users={state.users}
-            reactToPost={reactToPost}
-          />
+       {state.posts.map((p) => (
+          <PostCard key={p.id} post={p} users={state.users} reactToPost={reactToPost} />
         ))}
       </div>
     </section>
