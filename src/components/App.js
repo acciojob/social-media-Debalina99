@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import PostDetails from './pages/PostDetails'
+import PostDetails from './PostDetails'
 
 export default function App(){
 const [state, setState] = useState(() => loadData())
@@ -26,7 +26,6 @@ return (
 <div className="App">
   <h1>GenZ</h1>
   <nav>
-  {/* anchor tags required by tests - use onClick to do SPA navigation */}
   <a href="/" onClick={(e)=>{ e.preventDefault(); navigate('/') }}>Posts</a>
   <a href="/users" onClick={(e)=>{ e.preventDefault(); navigate('/users') }}>Users</a>
   <a href="/notifications" onClick={(e)=>{ e.preventDefault(); navigate('/notifications') }}>Notifications</a>
